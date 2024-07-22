@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'farming',
         'USER': '',  # Leave blank for Windows Authentication
         'PASSWORD': '',  # Leave blank for Windows Authentication
-        'HOST': 'INBLRWHFD4H1VX3',
+        'HOST': 'DESKTOP-MRIF2TR\SQLEXPRESS',
         'PORT': '',  # Default port is 1433, leave blank if using default
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
