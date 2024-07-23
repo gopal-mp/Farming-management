@@ -745,5 +745,18 @@ def track_order(request):
         'current_index': current_index
     }
     return render(request, 'track_order.html', context)
-def cart(request):
+def cart_view(request):
+    cart_items = cart.objects.filter(user="testing").select_related('product')
+
+    cart_details = cart_items.values(
+        'product__name',
+        'product__description',
+        'product__quantity',
+        'product__prize',
+        'product__image',
+        'quantity',
+        'added_at'
+        # Adding user name from the User model
+    )
+    print(cart_details)
     return render(request,'cart.html')

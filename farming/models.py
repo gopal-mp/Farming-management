@@ -36,15 +36,6 @@ class addcustomer(models.Model):
 
     
     
-    
-class product(models.Model):
-    description = models.CharField(max_length=150)
-    name = models.CharField(max_length=150)
-    quantity = models.CharField(max_length=150)
-    prize = models.CharField(max_length=150)
-    image = models.FileField(max_length=150)
-    usertype = models.CharField(max_length=150)
-
 class payment(models.Model):
     name = models.CharField(max_length=150)
     quantity = models.CharField(max_length=150)
@@ -113,3 +104,24 @@ class Order(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     delivery_date = models.DateField()
     
+
+
+class product(models.Model):
+    description = models.CharField(max_length=150)
+    name = models.CharField(max_length=150)
+    quantity = models.CharField(max_length=150)
+    prize = models.CharField(max_length=150)
+    image = models.FileField(max_length=150)
+    usertype = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+class cart(models.Model):
+    user = models.CharField(max_length=150)  # CharField for storing username
+    product = models.ForeignKey(product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.product.name}"
