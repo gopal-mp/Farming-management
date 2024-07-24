@@ -758,5 +758,5 @@ def cart_view(request):
         'added_at'
         # Adding user name from the User model
     )
-    print(cart_details)
+    print(request.session['cname'])
     return render(request,'cart.html')
